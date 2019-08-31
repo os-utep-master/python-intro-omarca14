@@ -1,6 +1,7 @@
 import re
+import sys
 #Open File
-file = open("declaration.txt", "r")
+file = open(sys.argv[1], "r")
 #Clear unwanted special characters,split each line into words and put them into a list.
 list = re.sub("[^'A-Za-z-\s]+", "", file.read()).replace("-", " ").replace("'"," ").lower().strip().split()
 #Sort the list
@@ -14,7 +15,7 @@ for word in list:
     else:
         dictionary[word] = 1
 #Open text if not found create it.
-f = open("myOutput.txt", "w")
+f = open(sys.argv[2], "w")
 #Iterate through the dictionary and write key and value to each line
 for word in dictionary:
     f.write(word + " " + str(dictionary[word]) + "\n")
